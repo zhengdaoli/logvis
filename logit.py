@@ -4,6 +4,8 @@ import re
 import json
 import time
 
+
+
 dt = time.strftime("%Y%m%d%H%M", time.localtime())
 
 
@@ -14,6 +16,16 @@ store_json_file = f'/li_zhengdao/github/seizure_metrics_DB.json'
 m1 = 'micro f1'
 m2 = 'macro f1'
 m3 = 'weighted f1'
+
+MAX_RUNS = 5
+    
+def load_DB():
+    metrics = dict()
+    if os.path.exists(store_json_file):
+        with open(store_json_file, 'r') as f:
+            metrics = json.load(f)
+        print('loaded previous DB!!')
+    return metrics
 
 def update_DB():
     r1 = re.compile(f'{m1}:\s*(\d+\.\d+),.*{m2}:\s*(\d+\.\d+),.*{m3}:\s*(\d+\.\d+).*')
@@ -51,22 +63,11 @@ def update_DB():
 
     with open(store_json_file, 'w') as f:
         json.dump(metrics, f)
-        print('stored')`
-        
-def draw_metrics_from_DB(metrics):
-    print(metrics)
-    
-def load_DB():
-    metrics = dict()
-    if os.path.exists(store_json_file):
-        with open(store_json_file, 'r') as f:
-            metrics = json.load(f)
-        print('loaded previous DB', metrics)
-    return metrics
+        print('stored')
 
-if __name__ == '__main__':
-    # update_DB()
-    draw_metrics_from_DB(load_DB())
+if __name__ == "__main__":
+    update_DB()
+
     
 
     
