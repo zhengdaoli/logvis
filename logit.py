@@ -11,7 +11,7 @@ dt = time.strftime("%Y%m%d%H%M", time.localtime())
 
 log_base_dir = '/li_zhengdao/github/EEG/logs/'
 log_file_regex = '*.log'
-store_json_file = f'/li_zhengdao/github/seizure_metrics_DB.json'
+store_json_file = f'/li_zhengdao/github/data/seizure_metrics_DB.json'
 
 m1 = 'micro f1'
 m2 = 'macro f1'
