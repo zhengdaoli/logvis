@@ -17,7 +17,7 @@ m1 = 'micro f1'
 m2 = 'macro f1'
 m3 = 'weighted f1'
 
-MAX_RUNS = 5
+MAX_RUNS = 10
     
 def load_DB():
     metrics = dict()
